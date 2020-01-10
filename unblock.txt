@@ -1,23 +1,43 @@
-###Торрент-трекеры
+### Торрент-трекеры ###
+
+# RuTracker
 rutracker.org
+
+# RuTor
 rutor.info
 rutor.is
-mega-tor.org
-kinozal.tv
+
+# NoName Club
 nnm-club.me
 nnm-club.ws
+nnmclub.to
+nnmclub.ro
+
+# Tfile
 tfile.me
 tfile-home.org
 tfile1.cc
+
+# MegaPeer
 megapeer.org
 megapeer.ru
-tapochek.net
-tparser.org
-rustorka.com
-uniongang.tv
-fast-torrent.ru
 
-###Каталоги медиаконтента для программ
+# Tapochek Net
+tapochek.net
+
+# Tparser
+tparser.org
+tparser.me
+
+### Облачные хранилища ###
+
+# idrive.com
+148.66.234.0/26
+64.90.202.0/24
+64.233.165.0/24
+
+### Каталоги медиаконтента для программ ###
+
 rezka.ag
 hdrezka.ag
 hdrezka.me
@@ -25,14 +45,18 @@ filmix.co
 filmix.cc
 seasonvar.ru
 
-###Книги
+
+### Книги ###
+
 lib.rus.ec
 flibusta.is
 flibs.me
 flisland.net
 flibusta.site
 
-###Телеграм
+
+### Телеграм ###
+
 telegram.org
 tdesktop.com
 tdesktop.org
@@ -42,6 +66,7 @@ telesco.pe
 telegram.dog
 telegram.me
 t.me
+telegra.ph
 web.telegram.org
 desktop.telegram.org
 updates.tdesktop.com
@@ -50,29 +75,28 @@ flora.web.telegram.org
 vesta.web.telegram.org
 pluto.web.telegram.org
 aurora.web.telegram.org
-149.154.172.0/22
+149.154.160.0/20
 91.108.4.0/22
 91.108.8.0/22
 91.108.12.0/22
 91.108.16.0/22
 91.108.56.0/22
-149.154.160.0/22
-149.154.164.0/22
-149.154.168.0/22
+109.239.140.0/24
+67.198.55.0/24
 
-###Разное
-edem.tv
-4pna.com
-2019.vote
 
-###Проверка Tor
+### Проверка Tor ###
 check.torproject.org
+hydraruzxpnew4af.onion
 
-###Пример разблокировки по IP (убрать # в начале строки)
-#195.82.146.214
 
-###Пример разблокировки по CIDR (убрать # в начале строки)
-#103.21.244.0/22
+### Примеры директив ###
+# Пример разблокировки по IP (убрать # в начале строки)
+# 195.82.146.214
 
-###Пример разблокировки по диапазону (убрать # в начале строки)
-#100.100.100.200-100.100.100.210
+# Пример разблокировки по CIDR (убрать # в начале строки)
+# 103.21.244.0/22
+
+# Пример разблокировки по диапазону (убрать # в начале строки)
+# 100.100.100.200-100.100.100.210
+

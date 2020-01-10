@@ -7,7 +7,7 @@
 Загрузите скрипт установки:
 ```bash
 opkg install wget ca-certificates
-wget --no-check-certificate -O /opt/bin/unblock_keenetic.sh https://raw.githubusercontent.com/Kyrie1965/unblock_keenetic/master/unblock_keenetic.sh
+wget --no-check-certificate -O /opt/bin/unblock_keenetic.sh https://raw.githubusercontent.com/elky92/unblock_keenetic/master/unblock_keenetic.sh
 chmod +x /opt/bin/unblock_keenetic.sh
 ```
 
@@ -25,13 +25,3 @@ unblock_keenetic.sh dnscrypt
 ```bash
 unblock_keenetic.sh remove
 ```
-
-Аналогичный скрипт для Padavan. ВНИМАНИЕ! Скрипт пока тоже не проверялся на реальном устройстве. Только для экспериментаторов. Все остальные должны использовать ручной метод установки, описанный в статье.
-
-Загрузка скрипта:
-```bash
-opkg install wget ca-certificates
-wget --no-check-certificate -O /opt/bin/unblock_padavan.sh https://raw.githubusercontent.com/Kyrie1965/unblock_keenetic/master/padavan/unblock_padavan.sh
-chmod +x /opt/bin/unblock_padavan.sh
-```
-
