@@ -192,7 +192,7 @@ echo -en "$WGET -q --no-check-certificate -O /opt/etc/crontab $github_link/unblo
 $WGET -q --no-check-certificate -O /opt/etc/crontab $github_link/unblock_keenetic/master/crontab
 echo_RESULT $?
 
-#ndmq -p 'opkg dns-override'
+ndmq -p 'opkg dns-override'
 ndmq -p 'system configuration save'
 confirm_reboot && ndmq -p 'system reboot'
 
