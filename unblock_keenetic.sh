@@ -9,7 +9,7 @@ TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget'
 
-github_link='https://raw.githubusercontent.com/elky92'
+github_link='https://raw.githubusercontent.com/TeroBlaZe'
 
 ### Functions for output formatted text
 function echo_OK()
@@ -38,7 +38,7 @@ function confirm_reboot()
     # call with a prompt string or use a default
     read -r -p "${1:-Are you want to reboot now? [y/N]} " response
     case "$response" in
-        [yY][eE][sS]|[yY]) 
+        [yY][eE][sS]|[yY])
             true
             ;;
         *)
@@ -63,11 +63,11 @@ then
   rm -rf /opt/etc/dnsmasq.conf
   rm -rf /opt/etc/crontab
   rm -rf /opt/etc/dnscrypt-proxy.toml
-  
+
   ndmq -p 'no opkg dns-override'
   ndmq -p 'system configuration save'
   confirm_reboot && ndmq -p 'system reboot'
-  
+
   sleep 5
   exit 0
 fi
@@ -78,14 +78,14 @@ then
     echo "Ошибка! Основной метод обхода блокировок не реализован в системе. Запустите unblock_keenetic.sh без параметров."
     exit 1
   fi
-  
+
   opkg update
   opkg install dnscrypt-proxy2
-  echo_RESULT $?  
+  echo_RESULT $?
 
   rm -rf /opt/etc/dnscrypt-proxy.toml
   echo -en "$WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  ...    "
-  $WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  
+  $WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml
   /opt/etc/init.d/S09dnscrypt-proxy2 start
   echo_RESULT $?
 
@@ -94,13 +94,13 @@ then
   $WGET -q --no-check-certificate -O /opt/bin/unblock_ipset.sh $github_link/unblock_keenetic/master/unblock_ipset_dnscrypt.sh
   echo_RESULT $?
   chmod +x /opt/bin/unblock_ipset.sh
-  
+
   rm -rf /opt/bin/unblock_dnsmasq.sh
   echo -en "$WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh...    "
   $WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh
   echo_RESULT $?
   chmod +x /opt/bin/unblock_dnsmasq.sh
-  
+
   unblock_update.sh
   echo_RESULT $?
 
@@ -119,9 +119,9 @@ rm -rf /opt/etc/ndm/netfilter.d/100-redirect.sh
 rm -rf /opt/etc/dnsmasq.conf
 rm -rf /opt/etc/crontab
 rm -rf /opt/etc/dnscrypt-proxy.toml
-  
+
 opkg update
-opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables 
+opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables
 echo_RESULT $?
 
 set_type="hash:net"
