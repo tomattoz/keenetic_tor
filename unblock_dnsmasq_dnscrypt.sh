@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/bin/env ash
 
 cat /dev/null > /opt/etc/unblock.dnsmasq
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/bin/env ash
 
 ipset flush unblock
 

@@ -1,4 +1,4 @@
-#!/opt/bin/bash
+#!/opt/bin/env ash
 
 # 8/16 Color vraibles:
 TXT_GRN='\e[0;32m'

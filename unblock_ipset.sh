@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/bin/env ash
 
 until ADDRS=$(dig +short google.com @localhost) && [ -n "$ADDRS" ] > /dev/null 2>&1; do sleep 5; done
 
@@ -13,21 +13,21 @@ while read line || [ -n "$line" ]; do
     ipset -exist add unblock $cidr
     continue
   fi
-  
+
   range=$(echo $line | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}-[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 
   if [ ! -z "$range" ]; then
     ipset -exist add unblock $range
     continue
   fi
-  
+
   addr=$(echo $line | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 
   if [ ! -z "$addr" ]; then
     ipset -exist add unblock $addr
     continue
   fi
-  
+
   dig +short $line @localhost | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{system("ipset -exist add unblock "$1)}'
 
 done < /opt/etc/unblock.txt

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/opt/bin/env ash
 
 [ "$type" == "ip6tables" ] && exit 0
 [ "$table" != "nat" ] && exit 0
