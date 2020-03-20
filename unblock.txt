@@ -1,102 +1,89 @@
-### Торрент-трекеры ###
-
-# RuTracker
-rutracker.org
-
-# RuTor
-rutor.info
-rutor.is
-
-# NoName Club
-nnm-club.me
-nnm-club.ws
-nnmclub.to
-nnmclub.ro
-
-# Tfile
-tfile.me
-tfile-home.org
-tfile1.cc
-
-# MegaPeer
-megapeer.org
-megapeer.ru
-
-# Tapochek Net
-tapochek.net
-
-# Tparser
-tparser.org
-tparser.me
-
-### Облачные хранилища ###
-
-# idrive.com
-148.66.234.0/26
-64.90.202.0/24
-64.233.165.0/24
-
-### Каталоги медиаконтента для программ ###
-
-rezka.ag
-hdrezka.ag
-hdrezka.me
-filmix.co
-filmix.cc
-seasonvar.ru
-
-
-### Книги ###
-
-lib.rus.ec
-flibusta.is
-flibs.me
-flisland.net
-flibusta.site
-
-
-### Телеграм ###
-
-telegram.org
-tdesktop.com
-tdesktop.org
-tdesktop.info
-tdesktop.net
-telesco.pe
-telegram.dog
-telegram.me
-t.me
-telegra.ph
-web.telegram.org
-desktop.telegram.org
-updates.tdesktop.com
-venus.web.telegram.org
-flora.web.telegram.org
-vesta.web.telegram.org
-pluto.web.telegram.org
-aurora.web.telegram.org
-149.154.160.0/20
-91.108.4.0/22
-91.108.8.0/22
-91.108.12.0/22
-91.108.16.0/22
-91.108.56.0/22
-109.239.140.0/24
-67.198.55.0/24
-
+### Примеры директив ###
+# Пример разблокировки по IP (убрать # в начале строки)
+# 195.82.146.214
+#
+# Пример разблокировки по CIDR (убрать # в начале строки)
+# 103.21.244.0/22
+#
+# Пример разблокировки по диапазону (убрать # в начале строки)
+# 100.100.100.200-100.100.100.210
 
 ### Проверка Tor ###
 check.torproject.org
 hydraruzxpnew4af.onion
 
+# Digital Ocean
+167.99.0.0/16
+206.189.0.0/16
 
-### Примеры директив ###
-# Пример разблокировки по IP (убрать # в начале строки)
-# 195.82.146.214
+# Digital Ocean TOP-10 IP
+104.248.78.23
+104.248.78.24
+138.68.244.143
+157.230.161.221
+165.227.0.164
+165.227.12.111
+167.172.215.127
+167.172.221.254
+167.99.233.73
+206.189.73.52
 
-# Пример разблокировки по CIDR (убрать # в начале строки)
-# 103.21.244.0/22
+### Телеграм ###
+109.239.140.0/24
+149.154.160.0/20
+67.198.55.0/24
+91.108.12.0/22
+91.108.16.0/22
+91.108.4.0/22
+91.108.56.0/22
+91.108.8.0/22
+aurora.web.telegram.org
+desktop.telegram.org
+flora.web.telegram.org
+pluto.web.telegram.org
+t.me
+tdesktop.com
+tdesktop.info
+tdesktop.net
+tdesktop.org
+telegra.ph
+telegram.dog
+telegram.me
+telegram.org
+telesco.pe
+updates.tdesktop.com
+venus.web.telegram.org
+vesta.web.telegram.org
+web.telegram.org
 
-# Пример разблокировки по диапазону (убрать # в начале строки)
-# 100.100.100.200-100.100.100.210
-
+### Сайты ###
+edem.tv
+filmix.cc
+filmix.co
+flibs.me
+flibusta.is
+flibusta.site
+flisland.net
+hdrezka.ag
+hdrezka.me
+ilook.tv
+kino.pub
+lib.rus.ec
+lostfilm.tv
+megapeer.org
+megapeer.ru
+nnm-club.me
+nnm-club.ws
+nnmclub.ro
+nnmclub.to
+rezka.ag
+rutor.info
+rutor.is
+rutracker.org
+seasonvar.ru
+tapochek.net
+tfile-home.org
+tfile.me
+tfile1.cc
+tparser.me
+tparser.org
