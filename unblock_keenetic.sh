@@ -36,7 +36,7 @@ function echo_RESULT()
 function confirm_reboot()
 {
     # call with a prompt string or use a default
-    read -r -p "${1:-Are you want to reboot now? [y/N]} " response
+    read -r -p "${1:-Reboot now? [y/N]} " response
     case "$response" in
         [yY][eE][sS]|[yY])
             true
