@@ -1,5 +1,11 @@
 #!/opt/bin/bash
 
+set -e
+
+if [[ $DEBUG -eq '1' ]]; then
+    set -x
+fi
+
 # 8/16 Color vraibles:
 TXT_GRN='\e[0;32m'
 TXT_RED='\e[0;31m'
@@ -48,63 +54,61 @@ function confirm_reboot()
 }
 
 
-if [ "$1" == "remove" ]
-then
-  opkg remove --force-depends --force-removal-of-dependent-packages --autoremove mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables dnscrypt-proxy2
-  rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
-  rm -rf /opt/etc/tor/torrc
-  rm -rf /opt/etc/unblock.txt
-  rm -rf /opt/etc/unblock.dnsmasq
-  rm -rf /opt/bin/unblock_ipset.sh
-  rm -rf /opt/bin/unblock_dnsmasq.sh
-  rm -rf /opt/bin/unblock_update.sh
-  rm -rf /opt/etc/init.d/S99unblock
-  rm -rf /opt/etc/ndm/netfilter.d/100-redirect.sh
-  rm -rf /opt/etc/dnsmasq.conf
-  rm -rf /opt/etc/crontab
-  rm -rf /opt/etc/dnscrypt-proxy.toml
-  
-  ndmq -p 'no opkg dns-override'
-  ndmq -p 'system configuration save'
-  confirm_reboot && ndmq -p 'system reboot'
-  
-  sleep 5
-  exit 0
+if [[ "$1" == "remove" ]]; then
+    opkg remove --force-depends --force-removal-of-dependent-packages --autoremove mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables dnscrypt-proxy2
+    rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
+    rm -rf /opt/etc/tor/torrc
+    rm -rf /opt/etc/unblock.txt
+    rm -rf /opt/etc/unblock.dnsmasq
+    rm -rf /opt/bin/unblock_ipset.sh
+    rm -rf /opt/bin/unblock_dnsmasq.sh
+    rm -rf /opt/bin/unblock_update.sh
+    rm -rf /opt/etc/init.d/S99unblock
+    rm -rf /opt/etc/ndm/netfilter.d/100-redirect.sh
+    rm -rf /opt/etc/dnsmasq.conf
+    rm -rf /opt/etc/crontab
+    rm -rf /opt/etc/dnscrypt-proxy.toml
+    
+    ndmq -p 'no opkg dns-override'
+    ndmq -p 'system configuration save'
+    confirm_reboot && ndmq -p 'system reboot'
+    
+    sleep 5
+    exit 0
 fi
 
-if [ "$1" == "dnscrypt" ]
-then
-  if [ ! -f /opt/etc/init.d/S99unblock ]; then
-    echo "Ошибка! Основной метод обхода блокировок не реализован в системе. Запустите unblock_keenetic.sh без параметров."
-    exit 1
-  fi
+if [[ "$1" == "dnscrypt" ]]; then
+    if [[ ! -f /opt/etc/init.d/S99unblock ]]; then
+        echo "Ошибка! Основной метод обхода блокировок не реализован в системе. Запустите unblock_keenetic.sh без параметров."
+        exit 1
+    fi
   
-  opkg update
-  opkg install dnscrypt-proxy2
-  echo_RESULT $?  
-
-  rm -rf /opt/etc/dnscrypt-proxy.toml
-  echo -en "$WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  ...    "
-  $WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  
-  /opt/etc/init.d/S09dnscrypt-proxy2 start
-  echo_RESULT $?
-
-  rm -rf /opt/bin/unblock_ipset.sh
-  echo -en "$WGET -q --no-check-certificate -O /opt/bin/unblock_ipset.sh $github_link/unblock_keenetic/master/unblock_ipset_dnscrypt.sh...    "
-  $WGET -q --no-check-certificate -O /opt/bin/unblock_ipset.sh $github_link/unblock_keenetic/master/unblock_ipset_dnscrypt.sh
-  echo_RESULT $?
-  chmod +x /opt/bin/unblock_ipset.sh
+    opkg update
+    opkg install dnscrypt-proxy2
+    echo_RESULT $?  
   
-  rm -rf /opt/bin/unblock_dnsmasq.sh
-  echo -en "$WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh...    "
-  $WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh
-  echo_RESULT $?
-  chmod +x /opt/bin/unblock_dnsmasq.sh
+    rm -rf /opt/etc/dnscrypt-proxy.toml
+    echo -en "$WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  ...    "
+    $WGET -q --no-check-certificate -O /opt/etc/dnscrypt-proxy.toml $github_link/unblock_keenetic/master/dnscrypt-proxy.toml  
+    /opt/etc/init.d/S09dnscrypt-proxy2 start
+    echo_RESULT $?
   
-  unblock_update.sh
-  echo_RESULT $?
-
-  exit 0
+    rm -rf /opt/bin/unblock_ipset.sh
+    echo -en "$WGET -q --no-check-certificate -O /opt/bin/unblock_ipset.sh $github_link/unblock_keenetic/master/unblock_ipset_dnscrypt.sh...    "
+    $WGET -q --no-check-certificate -O /opt/bin/unblock_ipset.sh $github_link/unblock_keenetic/master/unblock_ipset_dnscrypt.sh
+    echo_RESULT $?
+    chmod +x /opt/bin/unblock_ipset.sh
+    
+    rm -rf /opt/bin/unblock_dnsmasq.sh
+    echo -en "$WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh...    "
+    $WGET -q --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh $github_link/unblock_keenetic/master/unblock_dnsmasq_dnscrypt.sh
+    echo_RESULT $?
+    chmod +x /opt/bin/unblock_dnsmasq.sh
+    
+    unblock_update.sh
+    echo_RESULT $?
+  
+    exit 0
 fi
 
 rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
@@ -128,8 +132,8 @@ set_type="hash:net"
 
 ipset create testset hash:net -exist > /dev/null 2>&1
 retVal=$?
-if [ $retVal -ne 0 ]; then
-  set_type="hash:ip"
+if [[ $retVal -ne 0 ]]; then
+    set_type="hash:ip"
 fi
 
 lanip=$(ndmq -p 'show interface Bridge0' -P address)
@@ -197,4 +201,9 @@ ndmq -p 'system configuration save'
 confirm_reboot && ndmq -p 'system reboot'
 
 sleep 5
+
+if [[ $DEBUG -eq '1' ]]; then
+    set +x
+fi
+
 exit 0
