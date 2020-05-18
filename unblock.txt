@@ -1,5 +1,8 @@
-### Торрент-трекеры ###
+### Проверка Tor ###
+check.torproject.org
 
+
+### Торрент-трекеры ###
 # RuTracker
 rutracker.org
 
@@ -29,15 +32,15 @@ tapochek.net
 tparser.org
 tparser.me
 
-### Облачные хранилища ###
 
-# idrive.com
+### Облачные хранилища ###
+idrive.com
 148.66.234.0/26
 64.90.202.0/24
 64.233.165.0/24
 
-### Каталоги медиаконтента для программ ###
 
+### Каталоги медиаконтента для программ ###
 rezka.ag
 hdrezka.ag
 hdrezka.me
@@ -47,7 +50,6 @@ seasonvar.ru
 
 
 ### Книги ###
-
 lib.rus.ec
 flibusta.is
 flibs.me
@@ -56,7 +58,6 @@ flibusta.site
 
 
 ### Телеграм ###
-
 telegram.org
 tdesktop.com
 tdesktop.org
@@ -85,11 +86,6 @@ aurora.web.telegram.org
 67.198.55.0/24
 
 
-### Проверка Tor ###
-check.torproject.org
-hydraruzxpnew4af.onion
-
-
 ### Примеры директив ###
 # Пример разблокировки по IP (убрать # в начале строки)
 # 195.82.146.214
@@ -99,4 +95,3 @@ hydraruzxpnew4af.onion
 
 # Пример разблокировки по диапазону (убрать # в начале строки)
 # 100.100.100.200-100.100.100.210
-
