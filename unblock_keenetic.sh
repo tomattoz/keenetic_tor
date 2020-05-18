@@ -68,6 +68,12 @@ if [[ "$1" == "remove" ]]; then
     rm -rf /opt/etc/dnsmasq.conf
     rm -rf /opt/etc/crontab
     rm -rf /opt/etc/dnscrypt-proxy.toml
+    rm -rf /opt/etc/tor
+    rm -f /opt/etc/dnsmasq.conf
+    rm -f /opt/bin/unblock_update.sh
+    rm -f /opt/bin/unblock_dnsmasq.sh
+    rm -f /opt/bin/unblock_ipset.sh
+    rm -f /opt/bin/unblock_keenetic.sh
     
     ndmq -p 'no opkg dns-override'
     ndmq -p 'system configuration save'
