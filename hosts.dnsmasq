@@ -1,0 +1,18 @@
+### Home
+192.168.1.40     MacBook.local MacBook
+192.168.1.162    Hackintosh.local Hackintosh
+192.168.1.1      router90.local router90
+
+78.47.125.180    my.keenetic.net
+
+### FASTVPS
+#5.45.116.210    wiki.fv.ee wiki
+10.0.10.250      vpsbackup0.fv.ee vpsbackup0
+159.253.17.230   fastbilling0.fv.ee fastbilling0
+
+5.45.116.210     fasttestvps.ru fasttestvps
+
+### Local
+127.0.0.1	     localhost
+255.255.255.255	 broadcasthost
+::1              localhost
