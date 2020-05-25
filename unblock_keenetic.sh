@@ -56,19 +56,18 @@ function confirm_reboot()
 
 if [[ "$1" == "remove" ]]; then
     opkg remove --force-depends --force-removal-of-dependent-packages --autoremove mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables dnscrypt-proxy2
-    rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
-    rm -rf /opt/etc/tor/torrc
-    rm -rf /opt/etc/unblock.txt
-    rm -rf /opt/etc/unblock.dnsmasq
-    rm -rf /opt/bin/unblock_ipset.sh
-    rm -rf /opt/bin/unblock_dnsmasq.sh
-    rm -rf /opt/bin/unblock_update.sh
-    rm -rf /opt/etc/init.d/S99unblock
-    rm -rf /opt/etc/ndm/netfilter.d/100-redirect.sh
-    rm -rf /opt/etc/dnsmasq.conf
-    rm -rf /opt/etc/crontab
-    rm -rf /opt/etc/dnscrypt-proxy.toml
     rm -rf /opt/etc/tor
+    rm -f /opt/etc/ndm/fs.d/100-ipset.sh
+    rm -f /opt/etc/unblock.txt
+    rm -f /opt/etc/unblock.dnsmasq
+    rm -f /opt/bin/unblock_ipset.sh
+    rm -f /opt/bin/unblock_dnsmasq.sh
+    rm -f /opt/bin/unblock_update.sh
+    rm -f /opt/etc/init.d/S99unblock
+    rm -f /opt/etc/ndm/netfilter.d/100-redirect.sh
+    rm -f /opt/etc/dnsmasq.conf
+    rm -f /opt/etc/dnscrypt-proxy.toml
+    rm -f /opt/etc/cron.d/ipsec
     rm -f /opt/etc/dnsmasq.conf
     rm -f /opt/etc/hosts.dnsmasq
     rm -f /opt/bin/unblock_update.sh
@@ -118,18 +117,19 @@ if [[ "$1" == "dnscrypt" ]]; then
     exit 0
 fi
 
-rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
-rm -rf /opt/etc/tor/torrc
-rm -rf /opt/etc/unblock.txt
-rm -rf /opt/etc/unblock.dnsmasq
-rm -rf /opt/bin/unblock_ipset.sh
-rm -rf /opt/bin/unblock_dnsmasq.sh
-rm -rf /opt/bin/unblock_update.sh
-rm -rf /opt/etc/init.d/S99unblock
-rm -rf /opt/etc/ndm/netfilter.d/100-redirect.sh
-rm -rf /opt/etc/dnsmasq.conf
-rm -rf /opt/etc/crontab
-rm -rf /opt/etc/dnscrypt-proxy.toml
+rm -f /opt/etc/tor/torrc
+rm -f /opt/etc/ndm/fs.d/100-ipset.sh
+rm -f /opt/etc/unblock.txt
+rm -f /opt/etc/unblock.dnsmasq
+rm -f /opt/bin/unblock_ipset.sh
+rm -f /opt/bin/unblock_dnsmasq.sh
+rm -f /opt/bin/unblock_update.sh
+rm -f /opt/etc/init.d/S99unblock
+rm -f /opt/etc/ndm/netfilter.d/100-redirect.sh
+rm -f /opt/etc/dnsmasq.conf
+rm -f /opt/etc/cron.d/ipsec
+rm -f /opt/etc/hosts.dnsmasq
+rm -f /opt/etc/dnscrypt-proxy.toml
 
 opkg update
 opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables

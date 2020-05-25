@@ -6,11 +6,12 @@
 78.47.125.180    my.keenetic.net
 
 ### FASTVPS
-#5.45.116.210    wiki.fv.ee wiki
-10.0.10.250      vpsbackup0.fv.ee vpsbackup0
 159.253.17.230   fastbilling0.fv.ee fastbilling0
 
-5.45.116.210     fasttestvps.ru fasttestvps
+5.45.116.210     test-evo-85283.fv.ee test-evo-85283
+5.101.116.102    test-evz-159966.fv.ee test-evz-159966
+185.4.74.24      test-evz-163908.fv.ee test-evz-163908
+46.36.220.20     test-kvm-118800.fv.ee test-kvm-118800   
 
 ### Local
 127.0.0.1	     localhost
