@@ -203,10 +203,7 @@ echo -en "$WGET -O /opt/etc/hosts.dnsmasq $github_link/unblock_keenetic/master/h
 $WGET -O /opt/etc/hosts.dnsmasq $github_link/unblock_keenetic/master/hosts.dnsmasq
 echo_RESULT $?
 
-rm -rf /opt/etc/crontab
-echo -en "$WGET -O /opt/etc/crontab $github_link/unblock_keenetic/master/crontab...    "
-$WGET -O /opt/etc/crontab $github_link/unblock_keenetic/master/crontab
-echo_RESULT $?
+echo -e '00 06 * * * root /opt/bin/unblock_ipset.sh' > /opt/etc/cron.d/ipsec
 
 ndmq -p 'opkg dns-override'
 ndmq -p 'system configuration save'
