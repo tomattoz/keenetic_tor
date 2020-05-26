@@ -1,19 +1,23 @@
+### Local
+127.0.0.1        localhost
+255.255.255.255  broadcasthost
+::1
+
 ### Home
 192.168.1.40     MacBook.local MacBook
 192.168.1.162    Hackintosh.local Hackintosh
 192.168.1.1      router90.local router90
-
 78.47.125.180    my.keenetic.net
 
 ### FASTVPS
 159.253.17.230   fastbilling0.fv.ee fastbilling0
-
-5.45.116.210     test-evo-85283.fv.ee test-evo-85283
-5.101.116.102    test-evz-159966.fv.ee test-evz-159966
-185.4.74.24      test-evz-163908.fv.ee test-evz-163908
-46.36.220.20     test-kvm-118800.fv.ee test-kvm-118800   
-
-### Local
-127.0.0.1	     localhost
-255.255.255.255	 broadcasthost
-::1              localhost
+5.45.116.210     testvps-evo-85283.fv.ee testvps-evo-85283
+46.36.220.148    testvps-evo-138571.fv.ee testvps-evo-138571
+5.101.116.102    testvps-evz-159966.fv.ee testvps-evz-159966
+185.4.74.24      testvps-evz-163908.fv.ee testvps-evz-163908
+5.45.123.68      testvps-evzsas-160937.fv.ee testvps-evzsas-160937
+46.36.220.20     testvps-kvm-118800.fv.ee testvps-kvm-118800
+5.101.181.226    testvps-kvm-153570.fv.ee testvps-kvm-153570=
+5.101.122.16     testvps-whs-131267.fv.ee testvps-whs-131267
+5.101.191.78     testvps-whs-140358.fv.ee testvps-whs-140358
+5.101.122.197    testvps-whs-157266.fv.ee testvps-whs-157266
