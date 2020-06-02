@@ -62,7 +62,7 @@ if [[ "$1" == "remove" ]]; then
     rm -f /opt/etc/unblock.dnsmasq
     rm -f /opt/bin/unblock_ipset.sh
     rm -f /opt/bin/unblock_dnsmasq.sh
-    rm -f /opt/bin/unblock_update.sh
+    rm -f /opt/bin/update_dnsmasq.sh
     rm -f /opt/etc/init.d/S99unblock
     rm -f /opt/etc/ndm/netfilter.d/100-redirect.sh
     rm -f /opt/etc/dnsmasq.conf
@@ -70,9 +70,6 @@ if [[ "$1" == "remove" ]]; then
     rm -f /opt/etc/cron.d/ipsec
     rm -f /opt/etc/dnsmasq.conf
     rm -f /opt/etc/hosts.dnsmasq
-    rm -f /opt/bin/unblock_update.sh
-    rm -f /opt/bin/unblock_dnsmasq.sh
-    rm -f /opt/bin/unblock_ipset.sh
     rm -f /opt/bin/unblock_keenetic.sh
 
     ndmq -p 'no opkg dns-override'
@@ -111,7 +108,7 @@ if [[ "$1" == "dnscrypt" ]]; then
     echo_RESULT $?
     chmod +x /opt/bin/unblock_dnsmasq.sh
 
-    unblock_update.sh
+    update_dnsmasq.sh 
     echo_RESULT $?
 
     exit 0
@@ -123,7 +120,7 @@ rm -f /opt/etc/unblock.txt
 rm -f /opt/etc/unblock.dnsmasq
 rm -f /opt/bin/unblock_ipset.sh
 rm -f /opt/bin/unblock_dnsmasq.sh
-rm -f /opt/bin/unblock_update.sh
+rm -f /opt/bin/update_dnsmasq.sh 
 rm -f /opt/etc/init.d/S99unblock
 rm -f /opt/etc/ndm/netfilter.d/100-redirect.sh
 rm -f /opt/etc/dnsmasq.conf
@@ -173,10 +170,10 @@ chmod +x /opt/bin/unblock_dnsmasq.sh
 unblock_dnsmasq.sh
 echo_RESULT $?
 
-echo -en "$WGET -O /opt/bin/unblock_update.sh $github_link/unblock_keenetic/master/unblock_update.sh...    "
-$WGET -O /opt/bin/unblock_update.sh $github_link/unblock_keenetic/master/unblock_update.sh
+echo -en "$WGET -O /opt/bin/update_dnsmasq.sh $github_link/unblock_keenetic/master/update_dnsmasq.sh...    "
+$WGET -O /opt/bin/update_dnsmasq.sh $github_link/unblock_keenetic/master/update_dnsmasq.sh
 echo_RESULT $?
-chmod +x /opt/bin/unblock_update.sh
+chmod +x /opt/bin/update_dnsmasq.sh
 
 echo -en "$WGET -O /opt/etc/init.d/S99unblock $github_link/unblock_keenetic/master/S99unblock...    "
 $WGET -O /opt/etc/init.d/S99unblock $github_link/unblock_keenetic/master/S99unblock
