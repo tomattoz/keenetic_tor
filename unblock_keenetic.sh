@@ -55,7 +55,7 @@ function confirm_reboot()
 
 
 if [[ "$1" == "remove" ]]; then
-    opkg remove --force-depends --force-removal-of-dependent-packages --autoremove mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables dnscrypt-proxy2
+    opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2
     rm -rf /opt/etc/tor
     rm -f /opt/etc/ndm/fs.d/100-ipset.sh
     rm -f /opt/etc/unblock.txt
@@ -129,7 +129,7 @@ rm -f /opt/etc/hosts.dnsmasq
 rm -f /opt/etc/dnscrypt-proxy.toml
 
 opkg update
-opkg install mc tor tor-geoip bind-dig cron dnsmasq-full ipset iptables
+opkg install tor tor-geoip bind-dig dnsmasq-full ipset iptables
 echo_RESULT $?
 
 set_type="hash:net"
@@ -189,18 +189,19 @@ chmod +x /opt/etc/ndm/netfilter.d/100-redirect.sh
 sed -i "s/hash:net/${set_type}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
 sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
 
-rm -rf /opt/etc/dnsmasq.conf
+rm -f /opt/etc/dnsmasq.conf
 echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/unblock_keenetic/master/dnsmasq.conf...    "
 $WGET -O /opt/etc/dnsmasq.conf $github_link/unblock_keenetic/master/dnsmasq.conf
 echo_RESULT $?
 sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
-rm -rf /opt/etc/hosts.dnsmasq
+rm -f /opt/etc/hosts.dnsmasq
 echo -en "$WGET -O /opt/etc/hosts.dnsmasq $github_link/unblock_keenetic/master/hosts.dnsmasq...    "
 $WGET -O /opt/etc/hosts.dnsmasq $github_link/unblock_keenetic/master/hosts.dnsmasq
 echo_RESULT $?
 
-echo -e '00 06 * * * root /opt/bin/unblock_ipset.sh' > /opt/etc/cron.d/ipsec
+echo -e "00 06 * * * root /opt/bin/unblock_ipset.sh\n" > /opt/etc/cron.d/ipsec
+chmod 600 /opt/etc/cron.d/ipsec
 
 ndmq -p 'opkg dns-override'
 ndmq -p 'system configuration save'
