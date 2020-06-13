@@ -1,7 +1,6 @@
 ### Проверка Tor ###
 check.torproject.org
 
-
 ### Торрент-трекеры ###
 # RuTracker
 rutracker.org
@@ -58,6 +57,7 @@ flibusta.site
 
 
 ### Телеграм ###
+telegram.com
 telegram.org
 tdesktop.com
 tdesktop.org
