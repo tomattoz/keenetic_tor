@@ -11,6 +11,8 @@
 
 ### FASTVPS
 5.101.179.63    awx.fv.ee                    awx
+10.0.128.27     build1.fv.ee                 build1
+10.0.128.29     build2.fv.ee                 build2
 5.101.114.7     devbil.fv.ee                 devbil
 159.253.17.230  fastbilling0.fv.ee           fastbilling0
 5.101.124.80    fastweb-dev.fv.ee            fastweb-dev
@@ -28,5 +30,4 @@
 5.101.122.16    testvps-whs-131267.fv.ee     testvps-whs-131267
 5.101.191.78    testvps-whs-140358.fv.ee     testvps-whs-140358
 5.101.122.197   testvps-whs-157266.fv.ee     testvps-whs-157266
-10.0.128.27    build1.fv.ee build1
-10.0.128.29    build2.fv.ee build2
+192.168.1.40    rclone.router90.keenetic.pro rclone
