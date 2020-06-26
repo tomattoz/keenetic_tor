@@ -1,6 +1,19 @@
+### Примеры директив ###
+# Пример разблокировки по IP (убрать # в начале строки)
+# 195.82.146.214
+
+# Пример разблокировки по CIDR (убрать # в начале строки)
+# 103.21.244.0/22
+
+# Пример разблокировки по диапазону (убрать # в начале строки)
+# 100.100.100.200-100.100.100.210
+
 ### Проверка Tor ###
-# check.torproject.org
- 
+check.torproject.org
+
+### Проверка IP ###
+2ip.ru
+
 ### Торрент-трекеры ###
 # RuTracker
 rutracker.org
@@ -31,13 +44,8 @@ tapochek.net
 tparser.org
 tparser.me
 
-
 ### Облачные хранилища ###
 idrive.com
-# 148.66.234.0/26
-# 64.90.202.0/24
-# 64.233.165.0/24
-
 
 ### Каталоги медиаконтента для программ ###
 rezka.ag
@@ -47,51 +55,10 @@ filmix.co
 filmix.cc
 seasonvar.ru
 
-
 ### Книги ###
 lib.rus.ec
 flibusta.is
 flibs.me
 flisland.net
+
 flibusta.site
-
-
-### Телеграм ###
-telegram.com
-telegram.org
-tdesktop.com
-tdesktop.org
-tdesktop.info
-tdesktop.net
-telesco.pe
-telegram.dog
-telegram.me
-t.me
-telegra.ph
-web.telegram.org
-desktop.telegram.org
-updates.tdesktop.com
-venus.web.telegram.org
-flora.web.telegram.org
-vesta.web.telegram.org
-pluto.web.telegram.org
-aurora.web.telegram.org
-# 149.154.160.0/20
-# 91.108.4.0/22
-# 91.108.8.0/22
-# 91.108.12.0/22
-# 91.108.16.0/22
-# 91.108.56.0/22
-# 109.239.140.0/24
-# 67.198.55.0/24
-
-
-### Примеры директив ###
-# Пример разблокировки по IP (убрать # в начале строки)
-# 195.82.146.214
-
-# Пример разблокировки по CIDR (убрать # в начале строки)
-# 103.21.244.0/22
-
-# Пример разблокировки по диапазону (убрать # в начале строки)
-# 100.100.100.200-100.100.100.210
