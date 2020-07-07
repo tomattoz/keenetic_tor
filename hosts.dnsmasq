@@ -4,30 +4,30 @@
 ::1
 
 ### Home
-192.168.1.40     MacBook.local MacBook
-192.168.1.162    Hackintosh.local Hackintosh
+192.168.1.40     MacBook.local MacBook macbook.local macbook
+192.168.1.162    Hackintosh.local Hackintosh hackintosh.local hackintosh
 192.168.1.1      router90.local router90
 78.47.125.180    my.keenetic.net
 
 ### FASTVPS
-5.101.179.63    awx.fv.ee                    awx
-10.0.128.27     build1.fv.ee                 build1
-10.0.128.29     build2.fv.ee                 build2
-5.101.114.7     devbil.fv.ee                 devbil
-159.253.17.230  fastbilling0.fv.ee           fastbilling0
-5.101.124.80    fastweb-dev.fv.ee            fastweb-dev
-78.46.76.2      testdedic-hetzner.fv.ee      testdedic_hetzner
-94.130.16.232   testdedic-nvme.fv.ee         testdedic-nvme
-82.202.197.238  testdedic-selectel.fv.ee     testdedic-selectel
-5.45.116.210    testvps-evo-85283.fv.ee      testvps-evo-85283
-46.36.220.148   testvps-evo-138571.fv.ee     testvps-evo-138571
-5.101.116.102   testvps-evz-159966.fv.ee     testvps-evz-159966
-185.4.74.24     testvps-evz-163908.fv.ee     testvps-evz-163908
-5.45.123.68     testvps-evzsas-160937.fv.ee  testvps-evzsas-160937
-5.188.29.148    testvps-evoru-163336.fv.ee   testvps-evoru-163336
-46.36.220.20    testvps-kvm-118800.fv.ee     testvps-kvm-118800
-5.101.181.226   testvps-kvm-153570.fv.ee     testvps-kvm-153570
-5.101.122.16    testvps-whs-131267.fv.ee     testvps-whs-131267
-5.101.191.78    testvps-whs-140358.fv.ee     testvps-whs-140358
-5.101.122.197   testvps-whs-157266.fv.ee     testvps-whs-157266
-192.168.1.40    rclone.router90.keenetic.pro rclone
+5.101.179.63      awx.fv.ee                       awx
+10.0.128.27       build1.fv.ee                    build1
+10.0.128.29       build2.fv.ee                    build2
+5.101.114.7       devbil.fv.ee                    devbil
+159.253.17.230    fastbilling0.fv.ee              fastbilling0
+5.101.124.80      fastweb-dev.fv.ee               fastweb-dev
+78.46.76.2        testdedic-hetzner.fv.ee         testdedic_hetzner
+94.130.16.232     testdedic-nvme.fv.ee            testdedic-nvme
+82.202.197.238    testdedic-selectel.fv.ee        testdedic-selectel
+5.45.116.210      testvps-evo-85283.fv.ee         testvps-evo-85283
+46.36.220.148     testvps-evo-138571.fv.ee        testvps-evo-138571
+5.101.116.102     testvps-evz-159966.fv.ee        testvps-evz-159966
+185.4.74.24       testvps-evz-163908.fv.ee        testvps-evz-163908
+5.45.123.68       testvps-evzsas-160937.fv.ee     testvps-evzsas-160937
+5.188.29.148      testvps-evoru-163336.fv.ee      testvps-evoru-163336
+46.36.220.20      testvps-kvm-118800.fv.ee        testvps-kvm-118800
+5.101.181.226     testvps-kvm-153570.fv.ee        testvps-kvm-153570
+5.101.122.16      testvps-whs-131267.fv.ee        testvps-whs-131267
+5.101.191.78      testvps-whs-140358.fv.ee        testvps-whs-140358
+5.101.122.197     testvps-whs-157266.fv.ee        testvps-whs-157266
+5.101.120.232      dev-wiki.fv.ee                       dev-wiki
