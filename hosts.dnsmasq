@@ -14,7 +14,7 @@
 10.0.128.27       build1.fv.ee                    build1
 10.0.128.29       build2.fv.ee                    build2
 5.101.114.7       devbil.fv.ee                    devbil
-159.253.17.230    fastbilling0.fv.ee              fastbilling0
+10.0.128.20       fastbilling0.fv.ee              fastbilling0
 5.101.124.80      fastweb-dev.fv.ee               fastweb-dev
 78.46.76.2        testdedic-hetzner.fv.ee         testdedic_hetzner
 94.130.16.232     testdedic-nvme.fv.ee            testdedic-nvme
@@ -32,3 +32,4 @@
 5.101.122.197     testvps-whs-157266.fv.ee        testvps-whs-157266
 5.101.120.232    dev-wiki.fv.ee     dev-wiki
 185.4.74.24    dev-fastbilling0.fv.ee     dev-fastbilling0
+5.101.121.21    dev-fastbilling0.fv.ee     dev-fastbilling0
