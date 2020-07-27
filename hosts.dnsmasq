@@ -4,7 +4,8 @@
 ::1
 
 ### Home
-192.168.1.40     MacBook.local MacBook macbook.local macbook
+192.168.1.40     MacHome.local MacHome machome.local machome
+192.168.1.113    MacBook.local MacBook macbook.local macbook
 192.168.1.162    Hackintosh.local Hackintosh hackintosh.local hackintosh
 192.168.1.1      router90.local router90
 78.47.125.180    my.keenetic.net
@@ -31,4 +32,4 @@
 5.101.122.197     testvps-whs-157266.fv.ee        testvps-whs-157266
 5.101.120.232     dev-wiki.fv.ee                  dev-wiki
 5.101.121.21      dev-fastbilling0.fv.ee          dev-fastbilling0
-159.253.17.230    fastbilling0.fv.ee     fastbilling0
+10.0.128.20       fastbilling0.fv.ee              fastbilling0

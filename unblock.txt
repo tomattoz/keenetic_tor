@@ -12,7 +12,7 @@
 check.torproject.org
 
 ### Проверка IP ###
-2ip.ru
+#2ip.ru
 
 ### Торрент-трекеры ###
 # RuTracker
@@ -36,6 +36,7 @@ tfile1.cc
 # MegaPeer
 megapeer.org
 megapeer.ru
+
 
 # Tapochek Net
 tapochek.net
