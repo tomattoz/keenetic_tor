@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/opt/bin/bash
 
 until ADDRS=$(dig +short google.com @localhost -p 9153) && [ -n "$ADDRS" ] > /dev/null 2>&1; do sleep 5; done
 
