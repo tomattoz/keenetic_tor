@@ -1,0 +1,181 @@
+#!/opt/bin/bash
+
+# Скрипт сохраняет резервную копию entware, конфига роутера и прошивки
+prefix='/opt'
+PATH=${prefix}/bin:${prefix}/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+
+#=====================================================================================
+# Конфигурационные параметры скрипта
+#=====================================================================================
+# Какие компоненты бэкапить (1|0)
+# Entware. Всегда сохраняется новая копия
+IsEnt='1'
+# Конфигурация роутера. Сохраняется копия, если были изменения в конфиге
+IsConf='1'
+# Прошивка. Создается резервная копия, если прошивка изменялась
+IsFirm='1'
+# Ротация. Требуется ли удалять архивы с резервными копиями entware старше 1 месяца
+IsClean='0'
+# Dropbox. Требуется ли синхронизировать директорию с бэкапами бэкапы с удаленным каталогом
+IsDropbox='1'
+
+# Префикс для имени файла с бэкапом
+BACNAME='entware'
+
+# Что архивировать
+BACDIR='/tmp/mnt/Entware/'
+
+# Префикс для записи сообщений в syslog
+TAG='Daily Backup'
+
+# Каталоги, куда сохранять бэкапы
+BACKUP_DIR='backup_entware'
+
+LOCAL_DRIVE='Entware'
+LOCAL_DRIVE_PATH="/tmp/mnt/$LOCAL_DRIVE/$BACKUP_DIR"
+
+EXTERNAL_DRIVE='SharedEXT'
+EXTERNAL_DRIVE_PATH="/tmp/mnt/$EXTERNAL_DRIVE/$BACKUP_DIR"
+
+# Адрес Dropbox каталога, в который надо синкать бэкапы
+REMOTE_DRIVE='Dropbox'
+REMOTE_DRIVE_PATH="$REMOTE_DRIVE:/backups/devices/Keenetic/entware"
+
+# При определении изменялся ли конфиг, не учитывать данные строки (через экраннированный символ "ИЛИ" -> "\|".
+# При сравнении копий конфига не учитываются служебные строки, начинающиеся на '! $$$', и строка 'clock date', т.к. она обновляется при считывании конфига
+# Лучше не трогать :)
+EXCLCONFCMD='\! \$\$\$\|clock date'
+
+# Сколько дней хранить бэкапы.
+DAYSTOR='14'
+
+# Текущая дата для формирования имени файла с архивом
+DATE=$(date +%Y-%m-%d)
+
+if [[ -d "$EXTERNAL_DRIVE_PATH" ]]; then
+    logger -t "$TAG" "External directory $EXTERNAL_DRIVE_PATH exists. It will be used as a backup directory"
+    BACKUP_DRIVE="$EXTERNAL_DRIVE"
+    BACKUP_DRIVE_PATH="$EXTERNAL_DRIVE_PATH"
+elif [[ -d "$LOCAL_DRIVE_PATH" ]]; then
+    logger -t "$TAG" "Local directory $LOCAL_DRIVE_PATH exists. It will be used as a backup directory"
+    BACKUP_DRIVE="$LOCAL_DRIVE"
+    BACKUP_DRIVE_PATH="$LOCAL_DRIVE_PATH"
+else
+    logger -t "$TAG" 'ERROR! Does not such local and external directories for backups'
+    exit 1
+fi
+
+# Путь к сегодняшней резервной копии
+DAILY_BACKUP_PATH="$BACKUP_DRIVE_PATH/$DATE"
+CURRENT_BACKUP_PATH="$BACKUP_DRIVE_PATH/current"
+
+# Путь к резервной копии прошивки на USB FLASH. Определить в CLI по команде 'ls ?'. Обычно это метка диска в    виде 'LABEL:/'
+BACFIRMDIR="${BACKUP_DRIVE}:/${BACKUP_DIR}/${DATE}"
+
+# Какие каталоги пропускать при бэкапе entware
+EXCLUDE="
+tmp
+$BACKUP_DIR
+"
+
+#=====================================================================================
+# Начало скрипта
+#=====================================================================================
+
+logger -t "$TAG" 'Starting process'
+cd $BACDIR
+
+if [[ ! -d "$DAILY_BACKUP_PATH" ]]; then
+    logger -t "$TAG" "Creating folder $DAILY_BACKUP_PATH"
+    mkdir -p "$DAILY_BACKUP_PATH"
+fi
+if [[ ! -d "$CURRENT_BACKUP_PATH" ]]; then
+    logger -t "$TAG" "Creating folder $CURRENT_BACKUP_PATH"
+    mkdir -p "$CURRENT_BACKUP_PATH"
+fi
+
+# Делаем архив entware
+if [[ "$IsEnt" = '1' ]]; then
+	logger -t "$TAG" 'Starting backup folder with entware'
+    EXCLUDE_PARAM=$(echo "$EXCLUDE" | sed '/^$/d' | awk {'print "--exclude="$1'})
+    tar $EXCLUDE_PARAM -c -I /opt/bin/zstd -f ${DAILY_BACKUP_PATH}/${BACNAME}.tar.zst * 
+    logger -t "$TAG" 'Finished backup folder with entware'
+else
+	logger -t "$TAG" 'Skiping backup entware'
+fi
+
+# Делаем архив конфига
+if [[ "$IsConf" = '1' ]]; then
+	logger -t "$TAG" "Starting backup config"
+	ndmq -p 'show running-config' -P message > "${DAILY_BACKUP_PATH}/config"
+	if [[ -f "${CURRENT_BACKUP_PATH}/config" ]]; then
+		OLDCONF=$(grep -v "${EXCLCONFCMD}" ${CURRENT_BACKUP_PATH}/config)
+		CURCONF=$(grep -v "${EXCLCONFCMD}" ${DAILY_BACKUP_PATH}/config)
+		if [[ "$OLDCONF" != "$CURCONF" ]]; then
+			logger -t "$TAG" 'Config is changed. Do new copy'
+			cp -f ${DAILY_BACKUP_PATH}/config ${CURRENT_BACKUP_PATH}/config-cur-new
+			mv -f ${CURRENT_BACKUP_PATH}/config ${DAILY_BACKUP_PATH}/config
+			zstd ${DAILY_BACKUP_PATH}/config
+            rm -f ${DAILY_BACKUP_PATH}/config
+			mv ${CURRENT_BACKUP_PATH}/config-cur-new ${CURRENT_BACKUP_PATH}/config
+		else
+			logger -t "$TAG" 'Config is not changed. Renew current config copy'
+			mv -f ${DAILY_BACKUP_PATH}/config ${CURRENT_BACKUP_PATH}/config
+		fi
+	else
+		logger -t "$TAG" 'Current config copy not found. Is it first run? Do config copy'
+		cp ${DAILY_BACKUP_PATH}/config ${CURRENT_BACKUP_PATH}/config
+		zstd --rm --force ${DAILY_BACKUP_PATH}/config
+	fi
+else
+	logger -t "$TAG" 'Skiping backup config'
+fi
+
+# Делаем архив прошивки
+if [[ "$IsFirm" = '1' ]]; then
+	logger -t "$TAG" 'Starting backup firmware'
+	ndmq -p "copy flash:/firmware ${BACFIRMDIR}/firmware" -P message
+	if [[ -f "${CURRENT_BACKUP_PATH}/firmware" ]]; then
+		CMPFIRM=$(cmp ${CURRENT_BACKUP_PATH}/firmware ${DAILY_BACKUP_PATH}/firmware)
+		if [[ -n "$CMPFIRM" ]]; then
+			logger -t "$TAG" 'Firmware is changed. Do new copy'
+			cp -f ${DAILY_BACKUP_PATH}/firmware ${CURRENT_BACKUP_PATH}/firmware-cur-new
+			mv -f ${CURRENT_BACKUP_PATH}/firmware ${DAILY_BACKUP_PATH}/firmware
+			mv ${CURRENT_BACKUP_PATH}/firmware-cur-new ${CURRENT_BACKUP_PATH}/firmware
+            zstd --rm --force ${DAILY_BACKUP_PATH}/firmware
+		else
+			logger -t "$TAG" 'Firmware is not changed. Renew current firmware copy'
+			mv -f ${DAILY_BACKUP_PATH}/firmware ${CURRENT_BACKUP_PATH}/firmware
+		fi
+	else
+		logger -t "$TAG" 'Current firmware copy not found. Is it first run? Do firmware copy'
+		cp ${DAILY_BACKUP_PATH}/firmware ${CURRENT_BACKUP_PATH}/firmware
+        zstd --rm --force ${DAILY_BACKUP_PATH}/firmware
+	fi
+else
+	logger -t "$TAG" 'Skiping backup firmware'
+fi
+
+logger -t "$TAG" 'Backup firmware finished'
+
+if [[ "$IsClean" == '1' ]]; then
+    # Выводим в лог список файлов-архивов до удаления старых резервных копий и после
+    logger -t "$TAG" "Files before removing old archives
+    $(ls -l)"
+    logger -t "$TAG" 'Remove old archives'
+    find $BACKUP_DRIVE_PATH -mtime +${DAYSTOR} -delete
+    logger -t "$TAG" "Files after removing old archives
+    $(ls -l)"
+fi
+
+# Синхронизируем архивы с Dropbox
+if [[ "$IsDropbox" == '1' ]]; then
+    logger -t "$TAG" "Starting sync backup files to Dropbox"
+    rclone copy --dropbox-chunk-size 8M --buffer-size 4M --multi-thread-streams 1 --ignore-existing --no-check-dest --no-traverse --check-first --syslog --progress  ${BACKUP_DRIVE_PATH}/ ${REMOTE_DRIVE_PATH}/
+    logger -t "$TAG" "Sync backup files to Dropbox finished"
+else
+    logger -t "$TAG" "Rsync to Dropbox is not define. Skip it."
+fi
+
+logger -t "$TAG" "Backup created finished sucess!"
+logger -t "$TAG" "Bye-bye!"

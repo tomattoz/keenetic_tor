@@ -7,21 +7,21 @@
 Загрузите скрипт установки:
 ```bash
 opkg install wget ca-certificates
-wget --no-check-certificate -O /opt/bin/unblock_keenetic.sh https://raw.githubusercontent.com/elky92/unblock_keenetic/master/unblock_keenetic.sh
-chmod +x /opt/bin/unblock_keenetic.sh
+wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/elky92/configure_keenetic/master/configure_keenetic.sh
+chmod +x /opt/bin/configure_keenetic.sh
 ```
 
 Установка (автоматическое выполнение шагов 1-12):
 ```bash
-unblock_keenetic.sh
+configure_keenetic.sh
 ```
 
 После автоматической перезагрузки маршрутизатора для реализации «Дополнительный обход фильтрации DNS-запросов провайдером» (если вам это нужно) выполните команду:
 ```bash
-unblock_keenetic.sh dnscrypt
+configure_keenetic.sh dnscrypt
 ```
 
 Удаление обхода блокировок:
 ```bash
-unblock_keenetic.sh remove
+configure_keenetic.sh remove
 ```
