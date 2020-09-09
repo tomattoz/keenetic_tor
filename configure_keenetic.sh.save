@@ -1,5 +1,7 @@
 #!/opt/bin/bash
 
+set -e
+
 if [[ $DEBUG -eq '1' ]]; then
     set -x
 fi
@@ -183,7 +185,7 @@ chmod +x /opt/bin/update_dnsmasq.sh
 
 rm -f /opt/etc/cron.daily/backup
 echo -en "$WGET -O /opt/etc/cron.daily/backup $github_link/configure_keenetic/master/backup...    "
-$WGET -O /opt/etc/cron.daily/backup $github_link/configure_keenetic/master/backup
+$WGET -O /opt/etc/cron.daily/backup $github_link/configure_keenetic/backup
 echo_RESULT $?
 chmod 600 /opt/etc/cron.daily/backup
 
