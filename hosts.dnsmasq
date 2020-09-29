@@ -111,3 +111,4 @@
 10.0.3.36    ipmi.f19.fv.ee     ipmi
 10.0.3.25    ipmi.kvm0.fv.ee     ipmi
 10.0.3.101    ipmi.kvm1.fv.ee     ipmi
+10.0.3.48    ipmi.kvm2.fv.ee     ipmi
