@@ -15,6 +15,8 @@ WGET='/opt/bin/wget -q --no-check-certificate'
 
 github_link='https://raw.githubusercontent.com/elky92'
 
+lanip=$(ndmq -p 'show interface Bridge0' -P address)
+
 ### Functions for output formatted text
 function echo_OK()
 {
@@ -110,24 +112,9 @@ case "$1" in
         opkg install bind-dig dnsmasq-full cron
         echo_RESULT $?
 
-        rm -f /opt/bin/unblock_dnsmasq.sh
-        echo -en "$WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/configure_keenetic/master/unblock_dnsmasq.sh...    "
-        $WGET -O /opt/bin/unblock_dnsmasq.sh $github_link/configure_keenetic/master/unblock_dnsmasq.sh
-        echo_RESULT $?
-        chmod +x /opt/bin/unblock_dnsmasq.sh
-
-        /opt/bin/unblock_dnsmasq.sh
-        echo_RESULT $?
-
-        rm -f /opt/bin/update_dnsmasq.sh
-        echo -en "$WGET -O /opt/bin/update_dnsmasq.sh $github_link/configure_keenetic/master/update_dnsmasq.sh...    "
-        $WGET -O /opt/bin/update_dnsmasq.sh $github_link/configure_keenetic/master/update_dnsmasq.sh
-        echo_RESULT $?
-        chmod +x /opt/bin/update_dnsmasq.sh
-
         rm -f /opt/etc/dnsmasq.conf
-        echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq.conf...    "
-        $WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq.conf
+        echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq_dnsmasq.conf...    "
+        $WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq_dnsmasq.conf
         echo_RESULT $?
         sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
@@ -136,11 +123,12 @@ case "$1" in
         $WGET -O /opt/etc/hosts.dnsmasq $github_link/configure_keenetic/master/hosts.dnsmasq
         echo_RESULT $?
 
+        echo -en "Starting dnsmasq...    "
+        /opt/etc/init.d/S56dnsmasq restart
+        echo_RESULT $?
+
         ndmq -p 'opkg dns-override'
         ndmq -p 'system configuration save'
-        confirm_reboot && ndmq -p 'system reboot'
-
-        sleep 5
     ;;
     *)
         opkg update
@@ -154,8 +142,6 @@ case "$1" in
         if [[ $retVal -ne 0 ]]; then
             set_type="hash:ip"
         fi
-
-        lanip=$(ndmq -p 'show interface Bridge0' -P address)
 
         rm -f /opt/etc/ndm/fs.d/100-ipset.sh
         echo -en "$WGET -O /opt/etc/ndm/fs.d/100-ipset.sh $github_link/configure_keenetic/master/100-ipset.sh...    "
