@@ -17,6 +17,9 @@ github_link='https://raw.githubusercontent.com/elky92'
 
 lanip=$(ndmq -p 'show interface Bridge0' -P address)
 
+echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
+chmod +x /opt/etc/ndm/button.d/reboot.sh
+
 ### Functions for output formatted text
 function echo_OK()
 {
