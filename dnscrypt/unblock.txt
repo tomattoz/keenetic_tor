@@ -1,0 +1,65 @@
+### Примеры директив ###
+# Пример разблокировки по IP (убрать # в начале строки)
+# 195.82.146.214
+
+# Пример разблокировки по CIDR (убрать # в начале строки)
+# 103.21.244.0/22
+
+# Пример разблокировки по диапазону (убрать # в начале строки)
+# 100.100.100.200-100.100.100.210
+
+### Проверка Tor ###
+check.torproject.org
+
+### Проверка IP ###
+#2ip.ru
+
+### Торрент-трекеры ###
+# RuTracker
+rutracker.org
+
+# RuTor
+rutor.info
+rutor.is
+
+# NoName Club
+nnm-club.me
+nnm-club.ws
+nnmclub.to
+nnmclub.ro
+
+# Tfile
+tfile.me
+tfile-home.org
+tfile1.cc
+
+# MegaPeer
+megapeer.org
+megapeer.ru
+
+
+# Tapochek Net
+tapochek.net
+
+# Tparser
+tparser.org
+tparser.me
+
+### Облачные хранилища ###
+idrive.com
+
+### Каталоги медиаконтента для программ ###
+rezka.ag
+hdrezka.ag
+hdrezka.me
+filmix.co
+filmix.cc
+seasonvar.ru
+
+### Книги ###
+lib.rus.ec
+flibusta.is
+flibs.me
+flisland.net
+
+flibusta.site

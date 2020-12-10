@@ -7,7 +7,7 @@
 192.168.1.40     machome.spb.ru      machome.spb.ru.private                    machome.local                     MacHome
 192.168.1.113     macbookpro.spb.ru   macbookpro.spb.ru.private                 macbookpro.local                  MacBookPro 
 192.168.1.162     hackintosh.spb.ru   hackintosh.spb.ru.private                 hackintosh.local                  Hackintosh
-192.168.1.1       router router.local router.spb.ru       router.spb.ru.private                     router90.local                    router90
+192.168.1.1       router.spb.ru       router.spb.ru.private                     router90.local                    router90
 78.47.125.180     my.keenetic.ne
 
 ### FASTVPS
@@ -33,4 +33,3 @@
 10.0.128.20       fastbilling0.fv.ee                fastbilling0
 5.101.120.232     dev-wiki.fv.ee                    dev-wiki
 10.0.10.250    vpsbackup0.fv.ee     vpsbackup0
-10.0.128.35    baltrukov-dev01.fv.ee     baltrukov-dev01

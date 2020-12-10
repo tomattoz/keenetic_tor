@@ -12,13 +12,8 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-
 github_link='https://raw.githubusercontent.com/elky92'
-
 lanip=$(ndmq -p 'show interface Bridge0' -P address)
-
-echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
-chmod +x /opt/etc/ndm/button.d/reboot.sh
 
 ### Functions for output formatted text
 function echo_OK()
@@ -56,9 +51,25 @@ function confirm_reboot()
     esac
 }
 
-case "$1" in
-    remove)
-        opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2
+function _remove_dnscrypt()
+{
+
+
+}
+
+function _remove_dnsmasq()
+{
+
+}
+
+function _remove_kmod()
+{
+
+}
+
+function _remove_base_environment()
+{
+        opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig   dnsmasq-full ipset iptables dnscrypt-proxy2
         rm -rf /opt/etc/tor
         rm -f /opt/etc/ndm/fs.d/100-ipset.sh
         rm -f /opt/etc/unblock.txt
@@ -78,8 +89,11 @@ case "$1" in
         ndmq -p 'no opkg dns-override'
         ndmq -p 'system configuration save'
         confirm_reboot && ndmq -p 'system reboot'
-    ;;
-    dnscrypt)
+}
+
+
+function _install_dnscrypt()
+{
         if [[ ! -f /opt/etc/init.d/S99unblock ]]; then
             echo "Ошибка! Основной метод обхода блокировок не реализован в системе. Запустите configure_keenetic.sh без параметров."
             exit 1
@@ -107,10 +121,12 @@ case "$1" in
         echo_RESULT $?
         chmod +x /opt/bin/unblock_dnsmasq.sh
 
-        /opt/bin/update_dnsmasq.sh 
+        /opt/bin/update_dnsmasq.sh
         echo_RESULT $?
-    ;;
-    dnsmasq)
+}
+
+function _install_dnsmasq()
+{
         opkg update
         opkg install bind-dig dnsmasq-full cron
         echo_RESULT $?
@@ -132,8 +148,19 @@ case "$1" in
 
         ndmq -p 'opkg dns-override'
         ndmq -p 'system configuration save'
-    ;;
-    *)
+}
+
+function _install_kmod()
+{
+
+
+
+
+
+}
+
+function _install_base_environment()
+{
         opkg update
         opkg install tor tor-geoip bind-dig dnsmasq-full ipset iptables cron
         echo_RESULT $?
@@ -224,11 +251,49 @@ case "$1" in
         echo -e "00 06 * * * root /opt/bin/unblock_ipset.sh\n" > /opt/etc/cron.d/ipsec
         chmod 600 /opt/etc/cron.d/ipsec
 
+        echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
+        chmod +x /opt/etc/ndm/button.d/reboot.sh
+
         ndmq -p 'opkg dns-override'
         ndmq -p 'system configuration save'
         confirm_reboot && ndmq -p 'system reboot'
 
         sleep 5
+}
+
+
+case "$1" in
+    remove)
+        case "$2" in
+            dnscrypt)
+                _remove_dnscrypt
+            ;;
+            dnsmasq)
+                _remove_dnsmasq
+            ;;
+            kmod)
+                _remove_kmod
+            ;;
+            *)
+                _remove_base_environment
+            ;;
+        esac
+    ;;
+    install)
+        case "$2" in
+            dnscrypt)
+                _install_dnscrypt
+            ;;
+            dnsmasq)
+                _install_dnsmasq
+            ;;
+            kmod)
+                _install_kmod
+            ;;
+            *)
+                _install_base_environment
+            ;;
+        esac
     ;;
 esac
 
