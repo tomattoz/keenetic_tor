@@ -53,18 +53,29 @@ function confirm_reboot()
 
 function _remove_dnscrypt()
 {
+    /opt/etc/init.d/S09dnscrypt-proxy2 stop
+    opkg remove --force-depends --force-removal-of-dependent-packages --autoremove dnscrypt-proxy2
 
+    rm -f /opt/etc/dnscrypt-proxy.toml
+    rm -f /opt/etc/dnsmasq.conf
+    echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq_dnsmasq.conf...    "
+    $WGET -O /opt/etc/dnsmasq.conf $github_link/configure_keenetic/master/dnsmasq_dnsmasq.conf
+    echo_RESULT $?
+    sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
-}
+    rm -f /opt/etc/hosts.dnsmasq
+    echo -en "$WGET -O /opt/etc/hosts.dnsmasq $github_link/configure_keenetic/master/hosts.dnsmasq...    "
+    $WGET -O /opt/etc/hosts.dnsmasq $github_link/configure_keenetic/master/hosts.dnsmasq
+    echo_RESULT $?
 
-function _remove_dnsmasq()
-{
-
+    echo -en "Starting dnsmasq...    "
+    /opt/etc/init.d/S56dnsmasq restart
+    echo_RESULT $?
 }
 
 function _remove_kmod()
 {
-
+    echo ''
 }
 
 function _remove_base_environment()
@@ -94,7 +105,7 @@ function _remove_base_environment()
 
 function _install_dnscrypt()
 {
-        if [[ ! -f /opt/etc/init.d/S99unblock ]]; then
+        if [[ ! -f /opt/etc/hosts.dnsmasq ]]; then
             echo "Ошибка! Основной метод обхода блокировок не реализован в системе. Запустите configure_keenetic.sh без параметров."
             exit 1
         fi
@@ -152,11 +163,7 @@ function _install_dnsmasq()
 
 function _install_kmod()
 {
-
-
-
-
-
+    echo ''
 }
 
 function _install_base_environment()
@@ -267,9 +274,6 @@ case "$1" in
         case "$2" in
             dnscrypt)
                 _remove_dnscrypt
-            ;;
-            dnsmasq)
-                _remove_dnsmasq
             ;;
             kmod)
                 _remove_kmod
