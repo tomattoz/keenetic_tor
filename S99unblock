@@ -1,4 +1,4 @@
-#!/opt/bin/env ash
+#!/opt/bin/env bash
 
 [ "$1" != "start" ] && exit 0
 

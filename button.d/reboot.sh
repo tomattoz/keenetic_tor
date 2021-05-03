@@ -1,3 +1,3 @@
-#!/opt/bin/env ash
+#!/opt/bin/env bash
 
 ndmq -p "system reboot"

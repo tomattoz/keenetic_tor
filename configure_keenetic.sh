@@ -1,4 +1,4 @@
-#!/opt/bin/env ash
+#!/opt/bin/env bash
 
 if [[ "$DEBUG" -eq '1' ]]; then
     set -x
