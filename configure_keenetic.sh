@@ -1,6 +1,6 @@
 #!/opt/bin/env ash
 
-if [[ $DEBUG -eq '1' ]]; then
+if [[ "$DEBUG" -eq '1' ]]; then
     set -x
 fi
 
@@ -12,7 +12,7 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-github_link='https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master/'
+github_link='https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master'
 lanip=$(ndmq -p 'show interface Bridge0' -P address)
 
 ### Functions for output formatted text
@@ -58,8 +58,8 @@ function _remove_dnscrypt()
 
     rm -f /opt/etc/dnscrypt-proxy.toml
     rm -f /opt/etc/dnsmasq.conf
-    echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq_dnsmasq.conf...    "
-    $WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq_dnsmasq.conf
+    echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf...    "
+    $WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf
     echo_RESULT $?
     sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
@@ -142,8 +142,8 @@ function _install_dnsmasq()
         echo_RESULT $?
 
         rm -f /opt/etc/dnsmasq.conf
-        echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq_dnsmasq.conf...    "
-        $WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq_dnsmasq.conf
+        echo -en "$WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf...    "
+        $WGET -O /opt/etc/dnsmasq.conf $github_link/dnsmasq.conf
         echo_RESULT $?
         sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 
@@ -300,7 +300,7 @@ case "$1" in
     ;;
 esac
 
-if [[ $DEBUG -eq '1' ]]; then
+if [[ "$DEBUG" -eq '1' ]]; then
     set +x
 fi
 

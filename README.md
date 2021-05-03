@@ -7,10 +7,11 @@
 
 ## Автоматическая установка:
 ```shell script
-opkg install wget ca-certificates
+opkg install wget-ssl ca-certificates
 wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master/configure_keenetic.sh
 chmod +x /opt/bin/configure_keenetic.sh
-configure_keenetic.sh
+configure_keenetic.sh install
+configure_keenetic.sh install dnsmasq
 ```
 
 ## Удаление:
