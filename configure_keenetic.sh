@@ -175,7 +175,7 @@ function _install_base_environment()
 
         ipset create testset $set_type -exist > /dev/null 2>&1
         retVal=$?
-        if [[ $retVal -ne 0 ]]; then
+        if [[ "$retVal" -ne 0 ]]; then
             set_type="hash:ip"
         fi
 
