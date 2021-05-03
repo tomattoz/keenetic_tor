@@ -218,11 +218,11 @@ function _install_base_environment()
         echo_RESULT $?
         chmod +x /opt/bin/update_dnsmasq.sh
 
-        rm -f /opt/etc/cron.daily/backup
-        echo -en "$WGET -O /opt/etc/cron.daily/backup $github_link/backup...    "
-        $WGET -O /opt/etc/cron.daily/backup $github_link/backup
-        echo_RESULT $?
-        chmod 600 /opt/etc/cron.daily/backup
+#        rm -f /opt/etc/cron.daily/backup
+#        echo -en "$WGET -O /opt/etc/cron.daily/backup $github_link/backup...    "
+#        $WGET -O /opt/etc/cron.daily/backup $github_link/backup
+#        echo_RESULT $?
+#        chmod 600 /opt/etc/cron.daily/backup
 
         rm -f /opt/etc/init.d/S99unblock
         echo -en "$WGET -O /opt/etc/init.d/S99unblock $github_link/S99unblock...    "
