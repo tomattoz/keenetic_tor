@@ -8,14 +8,14 @@
 ## Автоматическая установка:
 ```shell script
 opkg install wget ca-certificates
-wget --no-check-certificate -O /opt/bin/unblock_keenetic.sh https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master/unblock_keenetic.sh
-chmod +x /opt/bin/unblock_keenetic.sh
-unblock_keenetic.sh
+wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master/configure_keenetic.sh
+chmod +x /opt/bin/configure_keenetic.sh
+configure_keenetic.sh
 ```
 
 ## Удаление:
 ```shell script
-unblock_keenetic.sh remove
+configure_keenetic.sh remove
 ```
 
 ## Ручное обновление списка блокировок (например при добавлении)

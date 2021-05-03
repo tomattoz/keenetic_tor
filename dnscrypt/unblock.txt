@@ -1,0 +1,61 @@
+### Примеры директив ###
+# Пример разблокировки по IP (убрать # в начале строки)
+# 195.82.146.214
+#
+# Пример разблокировки по CIDR (убрать # в начале строки)
+# 103.21.244.0/22
+#
+# Пример разблокировки по диапазону (убрать # в начале строки)
+# 100.100.100.200-100.100.100.210
+
+### Проверка Tor ###
+check.torproject.org
+hydraruzxpnew4af.onion
+
+# Digital Ocean
+167.99.0.0/16
+206.189.0.0/16
+
+# Digital Ocean TOP-10 IP
+104.248.78.23
+104.248.78.24
+138.68.244.143
+157.230.161.221
+165.227.0.164
+165.227.12.111
+167.172.215.127
+167.172.221.254
+167.99.233.73
+206.189.73.52
+
+### Сайты ###
+edem.tv
+filmix.cc
+filmix.co
+flibs.me
+flibusta.is
+flibusta.site
+flisland.net
+hdrezka.ag
+hdrezka.me
+ilook.tv
+kino.pub
+lib.rus.ec
+lostfilm.tv
+megapeer.org
+megapeer.ru
+nnm-club.me
+nnm-club.ws
+nnmclub.ro
+nnmclub.to
+rezka.ag
+rutor.info
+rutor.is
+rutracker.org
+seasonvar.ru
+tapochek.net
+tfile-home.org
+tfile.me
+tfile1.cc
+tparser.me
+tparser.org
