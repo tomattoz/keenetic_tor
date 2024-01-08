@@ -22,12 +22,17 @@ chmod +x /opt/bin/configure_keenetic.sh
 
 ## Удаление:
 ```shell script
-configure_keenetic.sh remove
+/opt/bin/configure_keenetic.sh remove
 ```
 
 ## Разблокировка адреса
 1. Добавить адрес в unblock.txt `mcedit /opt/etc/unblock.txt`
-2. Выполнить `bash update_dnsmasq.sh`
+1. Выполнить `bash /opt/bin/update_dnsmasq.sh`
+
+## Настройка и обновление Bridge
+1. Получить адреса на [сайте](https://bridges.torproject.org/bridges?transport=obfs4)
+1. Прописать в конфиг `mcedit /opt/etc/tor/torrc` (в начале строки должно быть `Bridge `)
+1. Перезапустить TOR `/opt/etc/init.d/S35tor restart`
 
 ## Возможные проблемы
 - Если не открываются сайты, но https://check.torproject.org открывается, значит вероятнее всего не работает dnsmasq
