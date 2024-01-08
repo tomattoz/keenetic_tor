@@ -81,11 +81,6 @@ function _remove_dnscrypt()
     echo_RESULT $?
 }
 
-function _remove_kmod()
-{
-    echo ''
-}
-
 function _remove_base_environment()
 {
         opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2 obfs4
@@ -166,11 +161,6 @@ function _install_dnsmasq()
         rci_post '[{"opkg": {"dns-override": true}},{"system": {"configuration": {"save": true}}}]'
 }
 
-function _install_kmod()
-{
-    echo ''
-}
-
 function _install_base_environment()
 {
         opkg update
@@ -224,12 +214,6 @@ function _install_base_environment()
         echo_RESULT $?
         chmod +x /opt/bin/update_dnsmasq.sh
 
-#        rm -f /opt/etc/cron.daily/backup
-#        echo -en "$WGET -O /opt/etc/cron.daily/backup $github_link/backup...    "
-#        $WGET -O /opt/etc/cron.daily/backup $github_link/backup
-#        echo_RESULT $?
-#        chmod 600 /opt/etc/cron.daily/backup
-
         rm -f /opt/etc/init.d/S99unblock
         echo -en "$WGET -O /opt/etc/init.d/S99unblock $github_link/S99unblock...    "
         $WGET -O /opt/etc/init.d/S99unblock $github_link/S99unblock
@@ -263,9 +247,6 @@ function _install_base_environment()
         echo -e "00 06 * * * root /opt/bin/unblock_ipset.sh\n" > /opt/etc/cron.d/ipsec
         chmod 600 /opt/etc/cron.d/ipsec
 
-        # echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
-        # chmod +x /opt/etc/ndm/button.d/reboot.sh
-
         rci_post '[{"opkg": {"dns-override": true}},{"system": {"configuration": {"save": true}}}]'
         confirm_reboot && rci_post '[{"system":{"reboot":true}}]'
 
@@ -279,9 +260,6 @@ case "$1" in
             dnscrypt)
                 _remove_dnscrypt
             ;;
-            kmod)
-                _remove_kmod
-            ;;
             *)
                 _remove_base_environment
             ;;
@@ -294,9 +272,6 @@ case "$1" in
             ;;
             dnsmasq)
                 _install_dnsmasq
-            ;;
-            kmod)
-                _install_kmod
             ;;
             *)
                 _install_base_environment
