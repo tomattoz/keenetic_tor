@@ -17,7 +17,7 @@ opkg update
 opkg install bash wget-ssl ca-certificates
 wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/PsychodelEKS/keenetic_tor/master/configure_keenetic.sh
 chmod +x /opt/bin/configure_keenetic.sh
-configure_keenetic.sh install
+/opt/bin/configure_keenetic.sh install
 ```
 
 ## Удаление:
