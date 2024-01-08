@@ -15,8 +15,8 @@ WGET='/opt/bin/wget -q --no-check-certificate'
 github_link='https://raw.githubusercontent.com/PsychodelEKS/unblock_keenetic/master'
 lanip=$($WGET -qO- localhost:79/rci/show/interface/Bridge0/address)
 
-temp="${temp%\"}"
-temp="${temp#\"}"
+lanip="${lanip%\"}"
+lanip="${lanip#\"}"
 
 function rci_post()
 {
