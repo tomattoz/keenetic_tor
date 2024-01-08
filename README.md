@@ -1,5 +1,5 @@
 # Выборочный обход блокировок на маршрутизаторах Keenetic
-Немного доработанная и очищенная версия оригинального скрипта.
+Ещё немного доработанная и очищенная версия оригинального скрипта.
 
 ## Нюансы
 - После установки скрипта, отключается встроенный в роутер интернет-фильтр. Все запросы обрабатываются в dnsmasq, даже если в настройках
@@ -8,8 +8,9 @@
 
 ## Автоматическая установка:
 ```shell script
+opkg update
 opkg install bash wget-ssl ca-certificates
-wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master/configure_keenetic.sh
+wget --no-check-certificate -O /opt/bin/configure_keenetic.sh https://raw.githubusercontent.com/PsychodelEKS/unblock_keenetic/master/configure_keenetic.sh
 chmod +x /opt/bin/configure_keenetic.sh
 configure_keenetic.sh install
 ```
@@ -20,7 +21,7 @@ configure_keenetic.sh remove
 ```
 
 ## Разблокировка адреса
-1. Добавить адрес в unblock.txt `nano /opt/etc/unblock.txt`
+1. Добавить адрес в unblock.txt `mcedit /opt/etc/unblock.txt`
 2. Выполнить `update_dnsmasq.sh`
 
 ## Возможные проблемы

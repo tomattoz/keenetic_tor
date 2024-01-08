@@ -12,7 +12,7 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-github_link='https://raw.githubusercontent.com/TeroBlaZe/unblock_keenetic/master'
+github_link='https://raw.githubusercontent.com/PsychodelEKS/unblock_keenetic/master'
 lanip=$(ndmq -p 'show interface Bridge0' -P address)
 
 ### Functions for output formatted text
@@ -80,7 +80,7 @@ function _remove_kmod()
 
 function _remove_base_environment()
 {
-        opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2
+        opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2 obfs4
         rm -rf /opt/etc/tor
         rm -f /opt/etc/ndm/fs.d/100-ipset.sh
         rm -f /opt/etc/unblock.txt
@@ -168,7 +168,7 @@ function _install_kmod()
 function _install_base_environment()
 {
         opkg update
-        opkg install tor tor-geoip bind-dig dnsmasq-full ipset iptables cron
+        opkg install tor tor-geoip bind-dig dnsmasq-full ipset iptables cron obfs4
         echo_RESULT $?
 
         set_type="hash:net"
