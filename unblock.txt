@@ -1,4 +1,7 @@
 ### Примеры директив ###
+# Пример разблокировки по домену
+# check.torproject.org
+#
 # Пример разблокировки по IP (убрать # в начале строки)
 # 195.82.146.214
 #
@@ -10,60 +13,6 @@
 
 ### Проверка Tor ###
 check.torproject.org
-hydraruzxpnew4af.onion
-
-# Digital Ocean
-167.99.0.0/16
-206.189.0.0/16
-
-# Digital Ocean TOP-10 IP
-104.248.78.23
-104.248.78.24
-138.68.244.143
-157.230.161.221
-165.227.0.164
-165.227.12.111
-167.172.215.127
-167.172.221.254
-167.99.233.73
-206.189.73.52
 
 ### Сайты ###
-edem.tv
-filmix.cc
-filmix.co
-flibs.me
-flibusta.is
-flibusta.site
-flisland.net
-hdrezka.ag
-hdrezka.me
-ilook.tv
-kino.pub
-lib.rus.ec
-lostfilm.tv
-megapeer.org
-megapeer.ru
-rezka.ag
-rutor.info
-rutor.is
-bt.rutor.org
-seasonvar.ru
-tapochek.net
-tfile-home.org
-tfile.me
-tfile1.cc
-tparser.me
-tparser.org
 rutracker.org
-bt.t-ru.org
-bt2.t-ru.org
-bt3.t-ru.org
-bt4.t-ru.org
-bt5.t-ru.org
-nnm-club.me
-nnm-club.ws
-nnmclub.ro
-nnmclub.to
-bt.nnm-club.ru
-bt.nnm-club.info
