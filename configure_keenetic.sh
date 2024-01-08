@@ -13,7 +13,12 @@ TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
 github_link='https://raw.githubusercontent.com/PsychodelEKS/unblock_keenetic/master'
-lanip=$(ndmq -p 'show interface Bridge0' -P address)
+lanip=$(wget -qO- localhost:79/rci/show/interface/Bridge0/address)
+
+function rci_post()
+{
+    wget -qO --post-data=$1 localhost:79/rci > /dev/null 2>&1
+}
 
 ### Functions for output formatted text
 function echo_OK()
@@ -97,9 +102,8 @@ function _remove_base_environment()
         rm -f /opt/etc/hosts.dnsmasq
         rm -f /opt/bin/configure_keenetic.sh
 
-        ndmq -p 'no opkg dns-override'
-        ndmq -p 'system configuration save'
-        confirm_reboot && ndmq -p 'system reboot'
+        rci_post '[{"opkg": {"dns-override": false}},{"system": {"configuration": {"save": true}}}]'
+        confirm_reboot && rci_post '[{"system":{"reboot":true}}]'
 }
 
 function _install_dnscrypt()
@@ -156,8 +160,7 @@ function _install_dnsmasq()
         /opt/etc/init.d/S56dnsmasq restart
         echo_RESULT $?
 
-        ndmq -p 'opkg dns-override'
-        ndmq -p 'system configuration save'
+        rci_post '[{"opkg": {"dns-override": true}},{"system": {"configuration": {"save": true}}}]'
 }
 
 function _install_kmod()
@@ -257,12 +260,11 @@ function _install_base_environment()
         echo -e "00 06 * * * root /opt/bin/unblock_ipset.sh\n" > /opt/etc/cron.d/ipsec
         chmod 600 /opt/etc/cron.d/ipsec
 
-        echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
-        chmod +x /opt/etc/ndm/button.d/reboot.sh
+        # echo -e '#!/opt/bin/sh\n\nndmq -p "system reboot"' > /opt/etc/ndm/button.d/reboot.sh
+        # chmod +x /opt/etc/ndm/button.d/reboot.sh
 
-        ndmq -p 'opkg dns-override'
-        ndmq -p 'system configuration save'
-        confirm_reboot && ndmq -p 'system reboot'
+        rci_post '[{"opkg": {"dns-override": true}},{"system": {"configuration": {"save": true}}}]'
+        confirm_reboot && rci_post '[{"system":{"reboot":true}}]'
 
         sleep 5
 }
