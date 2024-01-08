@@ -12,7 +12,7 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-github_link='https://raw.githubusercontent.com/PsychodelEKS/unblock_keenetic/master'
+github_link='https://raw.githubusercontent.com/PsychodelEKS/keenetic_tor/master'
 lanip=$($WGET -qO- localhost:79/rci/show/interface/Bridge0/address)
 
 lanip="${lanip%\"}"
