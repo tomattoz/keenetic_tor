@@ -85,6 +85,7 @@ function _remove_base_environment()
 {
         opkg remove --force-depends --force-removal-of-dependent-packages --autoremove tor tor-geoip bind-dig dnsmasq-full ipset iptables dnscrypt-proxy2 obfs4
         rm -rf /opt/etc/tor
+        rm -rf /tmp/tor
         rm -f /opt/etc/ndm/fs.d/100-ipset.sh
         rm -f /opt/etc/unblock.txt
         rm -f /opt/etc/unblock.dnsmasq
