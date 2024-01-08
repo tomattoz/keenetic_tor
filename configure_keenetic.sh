@@ -188,6 +188,10 @@ function _install_base_environment()
         echo_RESULT $?
         sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/tor/torrc
 
+        if [[ ! -d '/tmp/tor' ]]; then
+            mkdir -p /tmp/tor
+        fi
+
         rm -f /opt/etc/unblock.txt
         echo -en "$WGET -O /opt/etc/unblock.txt $github_link/unblock.txt...    "
         $WGET -O /opt/etc/unblock.txt $github_link/unblock.txt
