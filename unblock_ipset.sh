@@ -1,5 +1,7 @@
 #!/opt/bin/env bash
 
+date > /tmp/mnt/SANDISK/tmp/temp_cron_unblock_ipset.txt
+
 until ADDRS=$(dig +short google.com @localhost) && [ -n "$ADDRS" ] > /dev/null 2>&1; do sleep 5; done
 
 while read line || [ -n "$line" ]; do
