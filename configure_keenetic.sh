@@ -20,7 +20,7 @@ temp="${temp#\"}"
 
 function rci_post()
 {
-    wget -qO --post-data=$1 localhost:79/rci > /dev/null 2>&1
+    wget -qO --post-data="$1" localhost:79/rci > /dev/null 2>&1
 }
 
 ### Functions for output formatted text
