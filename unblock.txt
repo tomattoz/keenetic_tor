@@ -16,3 +16,6 @@ check.torproject.org
 
 ### Сайты ###
 rutracker.org
+
+### Google ###
+#play.google.com
