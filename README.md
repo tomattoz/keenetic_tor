@@ -45,6 +45,6 @@ chmod +x /opt/bin/configure_keenetic.sh
 
 ## Полезные команды
 - `netstat -anp | grep LISTEN` - Посмотреть на каких портах запущенны службы
-- `cat /tmp/ndnproxymain.stat` - Доступные DNS серверы. Если пусто, то будут проблемы с резолвом доменов внутри роутера. См. "Нюансы"
+- `cat /tmp/ndnproxymain.stat` - Доступные DNS серверы. Если пусто, то будут проблемы с резолвом доменов внутри роутера
 - `/opt/etc/init.d/S56dnsmasq restart` - Перезапуск dnsmasq
 - `/opt/etc/init.d/S35tor restart` - Перезапуск tor
