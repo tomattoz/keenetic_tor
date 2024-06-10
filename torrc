@@ -18,5 +18,7 @@ UseBridges 1
 
 ClientTransportPlugin obfs4 exec /opt/sbin/obfs4proxy managed
 
-Bridge obfs4 88.99.6.209:51804 FDF90B9AC2466DD54B6A3F9DB09774CD47BFA9A7 cert=dDXmykTtwadQd7dMXIp/+eIqCIeJ/C7q/YW57oZO/Xbu2kOEYzOJkcnuhiMsRpi9ph3faw iat-mode=0
-Bridge obfs4 104.185.22.161:60000 47A60A4BF32B6308C325C141181125F81B274F9D cert=BL67v8sPr039nC68mVMX2TOrJugKHDbNeg+J2VYMMuuxtpMT+twHT7VUgkiIFst+rwtLLw iat-mode=0
+### Example entries ###
+# Bridge obfs4 88.99.6.209:51804 FDF90B9AC2466DD54B6A3F9DB09774CD47BFA9A7 cert=dDXmykTtwadQd7dMXIp/+eIqCIeJ/C7q/YW57oZO/Xbu2kOEYzOJkcnuhiMsRpi9ph3faw iat-mode=0
+# Bridge obfs4 104.185.22.161:60000 47A60A4BF32B6308C325C141181125F81B274F9D cert=BL67v8sPr039nC68mVMX2TOrJugKHDbNeg+J2VYMMuuxtpMT+twHT7VUgkiIFst+rwtLLw iat-mode=0
+#######################
