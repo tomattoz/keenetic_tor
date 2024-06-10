@@ -33,7 +33,7 @@ chmod +x /opt/bin/configure_keenetic.sh
 1. Выполнить `bash /opt/bin/update_dnsmasq.sh`
 
 ## Настройка и обновление obfs4 bridge
-1. Получить адреса на [сайте](https://bridges.torproject.org/bridges?transport=obfs4)
+1. Получить адреса на [сайте](https://bridges.torproject.org/bridges?transport=obfs4) или в [Telegram](https://t.me/GetBridgesBot)
 1. Прописать в конфиг `mcedit /opt/etc/tor/torrc` (в начале строки должно быть `Bridge `)
 1. Перезапустить TOR `/opt/etc/init.d/S35tor restart`
 
