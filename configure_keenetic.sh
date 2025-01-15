@@ -210,7 +210,7 @@ function _install_base_environment()
         echo_RESULT $?
         chmod +x /opt/bin/unblock_dnsmasq.sh
 
-        /opt/bin/unblock_dnsmasq.sh
+        sh /opt/bin/unblock_dnsmasq.sh
         echo_RESULT $?
 
         rm -f /opt/bin/update_dnsmasq.sh
