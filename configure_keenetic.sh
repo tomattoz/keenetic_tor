@@ -12,7 +12,7 @@ TXT_BLUE='\e[0;34m'
 TXT_RST='\e[0m'
 
 WGET='/opt/bin/wget -q --no-check-certificate'
-github_link='https://raw.githubusercontent.com/PsychodelEKS/keenetic_tor/master'
+github_link='https://raw.githubusercontent.com/tomattoz/keenetic_tor/refs/heads/master'
 lanip=$($WGET -qO- localhost:79/rci/show/interface/Bridge0/address)
 
 lanip="${lanip%\"}"
@@ -141,7 +141,7 @@ function _install_dnscrypt()
 function _install_dnsmasq()
 {
         opkg update
-        opkg install bind-dig dnsmasq-full cron
+        opkg install mc bind-dig dnsmasq-full cron
         echo_RESULT $?
 
         rm -f /opt/etc/dnsmasq.conf
@@ -210,7 +210,7 @@ function _install_base_environment()
         echo_RESULT $?
         chmod +x /opt/bin/unblock_dnsmasq.sh
 
-        /opt/bin/unblock_dnsmasq.sh
+        sh /opt/bin/unblock_dnsmasq.sh
         echo_RESULT $?
 
         rm -f /opt/bin/update_dnsmasq.sh

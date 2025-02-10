@@ -11,11 +11,61 @@
 # Пример разблокировки по диапазону (убрать # в начале строки)
 # 100.100.100.200-100.100.100.210
 
-### Проверка Tor ###
-check.torproject.org
+###Основное
+upwork.com
+openai.com
+api.openai.com
+platform.openai.com
+auth.openai.com
+auth0.openai.com
+chatgpt.com
+strava.com
+7-zip.org
+medium.com
+linkedin.com
 
-### Сайты ###
+###Upwork
+upwork.com
+www.upwork.com
+104.18.89.237
+104.18.90.237
+
+###Медиа
+habr.com
+facebook.com
+instagram.com
+cdninstagram.com
+fbcdn.net
+youtube.com
+
+###Торрент-трекеры
 rutracker.org
+rutor.info
+rutor.is
+mega-tor.org
+kinozal.tv
+nnm-club.me
+nnm-club.ws
+tfile.me
+tfile-home.org
+tfile1.cc
+megatfile.cc
+megapeer.org
+megapeer.ru
+tapochek.net
+tparser.org
+tparser.me
+rustorka.com
+uniongang.tv
+fast-torrent.ru
 
-### Google ###
-#play.google.com
+###Книги
+lib.rus.ec
+flibusta.is
+flibs.me
+flisland.net
+flibusta.site
+
+###Проверка Tor
+check.torproject.org
+2ip.ru
