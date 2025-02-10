@@ -88,6 +88,7 @@ function _remove_base_environment()
         rm -rf /tmp/tor
         rm -f /opt/etc/ndm/fs.d/100-ipset.sh
         rm -f /opt/etc/unblock.txt
+        rm -f /opt/etc/unblockvpn.txt
         rm -f /opt/etc/unblock.dnsmasq
         rm -f /opt/bin/unblock_ipset.sh
         rm -f /opt/bin/unblock_dnsmasq.sh
@@ -196,6 +197,11 @@ function _install_base_environment()
         rm -f /opt/etc/unblock.txt
         echo -en "$WGET -O /opt/etc/unblock.txt $github_link/unblock.txt...    "
         $WGET -O /opt/etc/unblock.txt $github_link/unblock.txt
+        echo_RESULT $?
+
+        rm -f /opt/etc/unblockvpn.txt
+        echo -en "$WGET -O /opt/etc/unblockvpn.txt $github_link/unblockvpn.txt...    "
+        $WGET -O /opt/etc/unblockvpn.txt $github_link/unblockvpn.txt
         echo_RESULT $?
 
         rm -f /opt/bin/unblock_ipset.sh

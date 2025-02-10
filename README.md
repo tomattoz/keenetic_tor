@@ -37,6 +37,10 @@ chmod +x /opt/bin/configure_keenetic.sh
 1. Прописать в конфиг `mcedit /opt/etc/tor/torrc` (в начале строки должно быть `Bridge `)
 1. Перезапустить TOR `/opt/etc/init.d/S35tor restart`
 
+## Проброс через VPN
+- При необходимости заменить ppp0 100-redirect.sh на правильный (искать через ipconfig на рутере)
+- Адреса в unblockvpn.txt
+
 ## Возможные проблемы
 - Если не открываются сайты, но https://check.torproject.org открывается, значит вероятнее всего не работает dnsmasq
 - Если обратная ситуация и открываются все сайты кроме добавленных в unblock.txt, значит не работает tor
